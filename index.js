@@ -121,15 +121,15 @@ async function run() {
        
 
 
-        app.delete('/job/:id', async (req, res) => {
+        app.delete('/Task/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) }
-            const result = await jobCollection.deleteOne(query);
+            const result = await TaskCollection.deleteOne(query);
             res.send(result);
         })
 
-        app.get('/allpost', async (req, res) => {
-            const cursor = jobCollection.find();
+        app.get('/allTask', async (req, res) => {
+            const cursor = TaskCollection.find();
             const result = await cursor.toArray();
             res.send(result)
 
